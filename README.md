@@ -3,7 +3,7 @@
 ## Overview
 
 
-![image](https://homepesa.com/images/2023-03-m7.jpeg)
+![image](https://homepesa.com/images/2023-03-bitsharesorg-1536x705_.jpeg)
 
 This project is built using the following technologies:
 
