@@ -1,0 +1,5 @@
+mutation insertComments($issueId: uuid!, $parentCommentId: uuid!, $content: String!) {
+  insert_comments_one(object: {issueId: $issueId, content: $content, parentCommentId: $parentCommentId}) {
+    id
+  }
+}

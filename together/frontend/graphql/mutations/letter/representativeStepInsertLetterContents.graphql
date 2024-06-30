@@ -1,0 +1,9 @@
+mutation representativeStepInsertLetterContents(
+  $inputs: [letterContents_insert_input!]!
+) {
+  insert_letterContents(objects: $inputs) {
+    returning {
+      id
+    }
+  }
+}

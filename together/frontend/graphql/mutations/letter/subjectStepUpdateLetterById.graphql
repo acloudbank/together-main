@@ -1,0 +1,12 @@
+mutation subjectStepUpdateLetterById(
+  $id: uuid!
+  $topic: String!
+  $status: letterStatus_enum!
+) {
+  update_letters_by_pk(
+    _set: { topic: $topic, status: $status }
+    pk_columns: { id: $id }
+  ) {
+    id
+  }
+}

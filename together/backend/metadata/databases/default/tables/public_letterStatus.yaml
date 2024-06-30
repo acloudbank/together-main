@@ -1,0 +1,12 @@
+table:
+  name: letterStatus
+  schema: public
+is_enum: true
+array_relationships:
+  - name: letters
+    using:
+      foreign_key_constraint_on:
+        column: status
+        table:
+          name: letters
+          schema: public

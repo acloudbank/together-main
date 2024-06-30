@@ -1,0 +1,5 @@
+mutation deleteIssueById($id: uuid!) {
+  delete_issues_by_pk(id: $id) {
+    id
+  }
+}

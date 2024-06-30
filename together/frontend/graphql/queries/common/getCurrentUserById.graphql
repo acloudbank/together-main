@@ -1,0 +1,8 @@
+query getCurrentUserById($userId: uuid) {
+  user: users(where: { id: { _eq: $userId } }) {
+    id
+    email
+    username
+    accountType
+  }
+}

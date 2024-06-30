@@ -1,0 +1,68 @@
+table:
+  name: letterContents
+  schema: public
+object_relationships:
+  - name: letter
+    using:
+      foreign_key_constraint_on: letterId
+  - name: representative
+    using:
+      foreign_key_constraint_on: representativeId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        letter:
+          creatorId:
+            _eq: X-Hasura-User-Id
+      columns:
+        - content
+        - letterId
+        - representativeId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - content
+        - created_at
+        - id
+        - letterId
+        - representativeId
+        - updated_at
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - content
+      filter:
+        letter:
+          creatorId:
+            _eq: X-Hasura-User-Id
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        letter:
+          creatorId:
+            _eq: X-Hasura-User-Id
+event_triggers:
+  - name: replace_representative_name
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - representativeId
+          - id
+          - content
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: '{{HASURA_GRAPHQL_EVENTS_HANDLER_WEBHOOK_BASEURL}}/replaceRepresentativeName'
+    headers:
+      - name: HASURA_ACTION_SECRET
+        value_from_env: HASURA_ACTION_SECRET_ENV

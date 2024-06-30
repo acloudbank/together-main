@@ -1,0 +1,87 @@
+type Mutation {
+  addUserZipCode(
+    sessionId: uuid!
+    zipCode: String
+  ): addUserZipCodeOutput
+}
+
+type Mutation {
+  authenticateWithCredentials(
+    email: String
+    password: String
+  ): authenticateWithCredentialsOutput
+}
+
+type Mutation {
+  authenticateWithGoogle(
+    email: String
+    username: String
+  ): AuthenticateWithGoogleOutput
+}
+
+type Mutation {
+  confirmEmail(
+    emailConfirmationToken: String!
+  ): confirmEmailOutput
+}
+
+type Mutation {
+  requestPasswordReset(
+    email: String!
+  ): requestPasswordResetOutput
+}
+
+type Mutation {
+  resetPassword(
+    newPassword: String!
+    passwordResetToken: String!
+  ): resetPasswordOutput
+}
+
+type Mutation {
+  signUpWithCredentials(
+    accountType: String!
+    email: String!
+    password: String!
+    username: String!
+  ): signUpWithCredentialsOutput
+}
+
+type Mutation {
+  validatePasswordResetToken(
+    passwordResetToken: String!
+  ): ValidatePasswordResetTokenOutput
+}
+
+type AuthenticateWithGoogleOutput {
+  sessionId: uuid!
+}
+
+type authenticateWithCredentialsOutput {
+  sessionId: uuid!
+}
+
+type resetPasswordOutput {
+  sessionId: uuid!
+}
+
+type confirmEmailOutput {
+  sessionId: uuid!
+}
+
+type signUpWithCredentialsOutput {
+  sessionId: uuid!
+}
+
+type requestPasswordResetOutput {
+  email: String!
+}
+
+type addUserZipCodeOutput {
+  userId: uuid!
+}
+
+type ValidatePasswordResetTokenOutput {
+  userId: uuid!
+}
+

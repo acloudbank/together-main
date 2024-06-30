@@ -1,0 +1,22 @@
+mutation refreshSession(
+    $sessionId: uuid!
+    $userId: uuid!
+    $expires: timestamptz!
+    $lastActiveAt: timestamptz!
+  ) {
+    update_sessions_by_pk(
+      pk_columns: { id: $sessionId }
+      _set: { lastActiveAt: $lastActiveAt, expires: $expires }
+    ) {
+      id
+    }
+
+    updateUserLastActiveAt: update_users(
+      where: { id: { _eq: $userId } }
+      _set: { lastActiveAt: $lastActiveAt }
+    ) {
+      returning {
+        id
+      }
+    }
+  }

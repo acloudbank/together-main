@@ -1,0 +1,12 @@
+table:
+  name: issueCategory
+  schema: public
+is_enum: true
+array_relationships:
+  - name: issues
+    using:
+      foreign_key_constraint_on:
+        column: category
+        table:
+          name: issues
+          schema: public

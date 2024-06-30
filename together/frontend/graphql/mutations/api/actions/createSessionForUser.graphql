@@ -1,0 +1,20 @@
+mutation createSessionForUser(
+    $userId: uuid = ""
+    $userRole: String = ""
+    $expires: timestamptz = ""
+    $isValid: Boolean = true
+    $type: sessionType_enum
+
+  ) {
+    insert_sessions_one(
+      object: {
+        userId: $userId
+        userRole: $userRole
+        expires: $expires
+        isValid: $isValid
+        type: $type
+      }
+    ) {
+      id
+    }
+  }

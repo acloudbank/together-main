@@ -1,0 +1,4 @@
+table:
+  name: savedStatus
+  schema: public
+is_enum: true

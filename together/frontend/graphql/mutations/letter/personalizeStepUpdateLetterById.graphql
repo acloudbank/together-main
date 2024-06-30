@@ -1,0 +1,27 @@
+mutation personalizeStepUpdateLetterById(
+  $id: uuid!
+  $creatorName: String!
+  $creatorSurname: String!
+  $unit: String!
+  $street: String!
+  $city: String!
+  $state: String!
+  $status: letterStatus_enum!
+  $language: language_enum
+) {
+  update_letters_by_pk(
+    _set: {
+      creatorSurname: $creatorSurname
+      creatorName: $creatorName
+      unit: $unit
+      street: $street
+      status: $status
+      city: $city
+      state: $state
+      language: $language
+    }
+    pk_columns: { id: $id }
+  ) {
+    id
+  }
+}

@@ -1,0 +1,20 @@
+table:
+  name: representatives
+  schema: public
+array_relationships:
+  - name: letterContents
+    using:
+      foreign_key_constraint_on:
+        column: representativeId
+        table:
+          name: letterContents
+          schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - firstname
+        - id
+        - lastname
+        - middlename
+      filter: {}

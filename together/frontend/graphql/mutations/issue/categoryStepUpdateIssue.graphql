@@ -1,0 +1,12 @@
+mutation categoryStepUpdateIssue(
+  $id: uuid!
+  $category: issueCategory_enum!
+  $status: issueStatus_enum!
+) {
+  update_issues_by_pk(
+    pk_columns: { id: $id }
+    _set: { category: $category, status: $status }
+  ) {
+    id
+  }
+}

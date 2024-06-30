@@ -1,0 +1,8 @@
+query getRepresentatives {
+  representatives {
+    firstname
+    id
+    lastname
+    middlename
+  }
+}

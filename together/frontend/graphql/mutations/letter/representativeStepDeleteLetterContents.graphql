@@ -1,0 +1,17 @@
+mutation representativeStepDeleteLetterContents(
+  $letterId: uuid!
+  $representativeIds: [uuid!]!
+) {
+  delete_letterContents(
+    where: {
+      _and: [
+        { representativeId: { _in: $representativeIds } }
+        { letterId: { _eq: $letterId } }
+      ]
+    }
+  ) {
+    returning {
+      id
+    }
+  }
+}

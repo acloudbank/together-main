@@ -1,0 +1,5 @@
+mutation insertIssuesUsers($issueId: uuid!) {
+  insert_issues_users_one(object: {issueId: $issueId}) {
+    id
+  }
+}

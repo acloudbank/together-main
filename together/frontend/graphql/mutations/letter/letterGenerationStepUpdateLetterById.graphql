@@ -1,0 +1,12 @@
+mutation letterGenerationStepUpdateLetterById(
+  $id: uuid!
+  $status: letterStatus_enum!
+  $sendEmail: Boolean
+) {
+  update_letters_by_pk(
+    _set: { status: $status, sendEmail: $sendEmail }
+    pk_columns: { id: $id }
+  ) {
+    id
+  }
+}

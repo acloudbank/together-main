@@ -1,0 +1,8 @@
+mutation privacySelectionStepInsertIssue(
+  $isPrivate: Boolean
+  $status: issueStatus_enum!
+) {
+  insert_issues_one(object: { isPrivate: $isPrivate, status: $status }) {
+    id
+  }
+}

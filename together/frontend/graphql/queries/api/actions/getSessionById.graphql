@@ -1,0 +1,13 @@
+query getSessionById($sessionId: uuid!) {
+  sessions_by_pk(id: $sessionId) {
+    id
+    expires
+    userRole
+    type
+    userId
+    user {
+      accountType
+      id
+    }
+  }
+}

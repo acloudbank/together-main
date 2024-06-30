@@ -1,0 +1,2 @@
+CREATE TABLE "public"."issues_users" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "issueId" uuid NOT NULL, "userId" uuid NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."users"("id") ON UPDATE cascade ON DELETE restrict, FOREIGN KEY ("issueId") REFERENCES "public"."issues"("id") ON UPDATE cascade ON DELETE restrict, UNIQUE ("id"));COMMENT ON TABLE "public"."issues_users" IS E'Issue members';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

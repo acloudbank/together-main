@@ -1,0 +1,17 @@
+mutation insertUserIssueListEntry($issueId: uuid!, $userIssueListId: uuid!) {
+  insert_userIssueListEntries_one(
+    object: { issueId: $issueId, userIssueListId: $userIssueListId }
+  ) {
+    id
+    issue {
+      userIssueListEntries_aggregate(
+        where: { userIssueList: { type: { _eq: LIKED } } }
+      ) {
+        aggregate {
+          count
+        }
+      }
+      id
+    }
+  }
+}

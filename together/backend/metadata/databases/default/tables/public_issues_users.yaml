@@ -1,0 +1,33 @@
+table:
+  name: issues_users
+  schema: public
+object_relationships:
+  - name: issue
+    using:
+      foreign_key_constraint_on: issueId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      set:
+        userId: x-hasura-User-Id
+      columns:
+        - issueId
+        - userId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - issueId
+        - userId
+      filter: {}
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id

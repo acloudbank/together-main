@@ -1,0 +1,38 @@
+{
+  "name": "together",
+  "description": "",
+  "license": "",
+  "author": "Peerplays",
+  "scripts": {
+    "bootstrap": "yarn install && node scripts/create-env-files.js && cd frontend && yarn install",
+    "stop": "docker compose down",
+    "dev": "docker compose up -d && yarn hasura:console",
+    "dev:restart": "yarn stop && yarn dev",
+    "hasura:console": "cd backend && hasura console --envfile .env",
+    "migrate:apply": "cd backend && hasura migrate --skip-update-check --envfile .env --database-name default apply",
+    "metadata:apply": "cd backend && hasura metadata --skip-update-check --envfile .env apply",
+    "build:frontend": "cd frontend && yarn build",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^5.1.1",
+    "husky": "^8.0.3",
+    "js-yaml": "^4.1.0",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.7",
+    "release-it": "^15.10.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md,tsx,ts}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

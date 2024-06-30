@@ -1,0 +1,90 @@
+table:
+  name: letters
+  schema: public
+object_relationships:
+  - name: issue
+    using:
+      foreign_key_constraint_on: issueId
+  - name: languageByLanguage
+    using:
+      foreign_key_constraint_on: language
+  - name: letterStatus
+    using:
+      foreign_key_constraint_on: status
+  - name: user
+    using:
+      foreign_key_constraint_on: creatorId
+array_relationships:
+  - name: letterContents
+    using:
+      foreign_key_constraint_on:
+        column: letterId
+        table:
+          name: letterContents
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      set:
+        creatorId: x-hasura-User-Id
+      columns:
+        - additionalInformation
+        - city
+        - creatorName
+        - creatorSurname
+        - expectations
+        - feelings
+        - language
+        - state
+        - status
+        - street
+        - topic
+        - unit
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - additionalInformation
+        - city
+        - created_at
+        - creatorId
+        - creatorName
+        - creatorSurname
+        - expectations
+        - feelings
+        - id
+        - issueId
+        - language
+        - sendEmail
+        - state
+        - status
+        - street
+        - topic
+        - unit
+        - updated_at
+      filter:
+        creatorId:
+          _eq: X-Hasura-User-Id
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - additionalInformation
+        - city
+        - creatorName
+        - creatorSurname
+        - expectations
+        - feelings
+        - language
+        - sendEmail
+        - state
+        - status
+        - street
+        - topic
+        - unit
+      filter:
+        creatorId:
+          _eq: X-Hasura-User-Id
+      check: null

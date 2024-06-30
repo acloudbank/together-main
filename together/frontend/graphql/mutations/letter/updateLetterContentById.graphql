@@ -1,0 +1,8 @@
+mutation updateLetterContentById($contentId: uuid!, $content: String) {
+  update_letterContents_by_pk(
+    pk_columns: { id: $contentId }
+    _set: { content: $content }
+  ) {
+    id
+  }
+}

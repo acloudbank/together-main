@@ -1,0 +1,27 @@
+query getIssueById($issueId: uuid!) {
+  issues_by_pk(id: $issueId) {
+    content
+    id
+    isPrivate
+    title
+    creatorId
+    link
+    fieldViewScale
+    category
+    status
+    created_at
+    user {
+      username
+    }
+    letters_aggregate {
+      aggregate {
+        count
+      }
+    }
+    userIssueListEntries_aggregate(where: {userIssueList: {type: {_eq: LIKED}}}) {
+      aggregate {
+        count
+      }
+    }
+  }
+}

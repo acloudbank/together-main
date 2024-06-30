@@ -1,0 +1,17 @@
+query getUser($where: users_bool_exp) {
+  user: users(where: $where, limit: 1) {
+    id
+    username
+    email
+    emailVerified
+    image
+    passwordHash
+    passwordResetToken
+    passwordResetTokenExpiresAt
+    emailConfirmationToken
+    emailConfirmationLastSentAt
+    passwordResetLastSentAt
+    accountType
+    lastActiveAt
+  }
+}

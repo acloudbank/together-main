@@ -1,0 +1,46 @@
+table:
+  name: lettersRepresentatives
+  schema: public
+object_relationships:
+  - name: letter
+    using:
+      foreign_key_constraint_on: letterId
+  - name: representative
+    using:
+      foreign_key_constraint_on: representativeId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        letter:
+          userId:
+            _eq: X-Hasura-User-Id
+      columns:
+        - letterId
+        - representativeId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - letterId
+        - representativeId
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - letterId
+        - representativeId
+      filter:
+        letter:
+          userId:
+            _eq: X-Hasura-User-Id
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        letter:
+          userId:
+            _eq: X-Hasura-User-Id

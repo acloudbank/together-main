@@ -1,0 +1,15 @@
+mutation deleteUserIssueListLikeEntryById($id: uuid!) {
+  delete_userIssueListEntries_by_pk(id: $id) {
+    id
+    issue {
+      userIssueListEntries_aggregate(
+        where: { userIssueList: { type: { _eq: LIKED } } }
+      ) {
+        aggregate {
+          count
+        }
+      }
+      id
+    }
+  }
+}

@@ -1,0 +1,97 @@
+table:
+  name: issues
+  schema: public
+object_relationships:
+  - name: issueCategory
+    using:
+      foreign_key_constraint_on: category
+  - name: issueFieldViewScale
+    using:
+      foreign_key_constraint_on: fieldViewScale
+  - name: issueStatus
+    using:
+      foreign_key_constraint_on: status
+  - name: user
+    using:
+      foreign_key_constraint_on: creatorId
+array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: issueId
+        table:
+          name: comments
+          schema: public
+  - name: issues_users
+    using:
+      foreign_key_constraint_on:
+        column: issueId
+        table:
+          name: issues_users
+          schema: public
+  - name: letters
+    using:
+      foreign_key_constraint_on:
+        column: issueId
+        table:
+          name: letters
+          schema: public
+  - name: userIssueListEntries
+    using:
+      foreign_key_constraint_on:
+        column: issueId
+        table:
+          name: userIssueListEntries
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      set:
+        creatorId: x-hasura-User-Id
+      columns:
+        - category
+        - content
+        - fieldViewScale
+        - isPrivate
+        - status
+        - link
+        - title
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - category
+        - content
+        - created_at
+        - fieldViewScale
+        - id
+        - isPrivate
+        - status
+        - link
+        - title
+        - updated_at
+        - creatorId
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - category
+        - content
+        - fieldViewScale
+        - isPrivate
+        - status
+        - link
+        - title
+      filter:
+        creatorId:
+          _eq: X-Hasura-User-Id
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        creatorId:
+          _eq: X-Hasura-User-Id

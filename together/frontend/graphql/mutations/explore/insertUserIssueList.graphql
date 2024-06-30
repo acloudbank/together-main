@@ -1,0 +1,5 @@
+mutation insertUserIssueList($type: userIssueListType_enum!) {
+  insert_userIssueLists_one(object: { type: $type }) {
+    id
+  }
+}

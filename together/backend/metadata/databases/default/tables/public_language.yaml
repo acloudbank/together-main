@@ -1,0 +1,12 @@
+table:
+  name: language
+  schema: public
+is_enum: true
+array_relationships:
+  - name: letters
+    using:
+      foreign_key_constraint_on:
+        column: language
+        table:
+          name: letters
+          schema: public

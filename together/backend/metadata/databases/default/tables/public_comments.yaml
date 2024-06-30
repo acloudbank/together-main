@@ -1,0 +1,45 @@
+table:
+  name: comments
+  schema: public
+object_relationships:
+  - name: comment
+    using:
+      foreign_key_constraint_on: parentCommentId
+  - name: issue
+    using:
+      foreign_key_constraint_on: issueId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: parentCommentId
+        table:
+          name: comments
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      set:
+        userId: x-hasura-User-Id
+      columns:
+        - content
+        - issueId
+        - parentCommentId
+        - userId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - content
+        - created_at
+        - updated_at
+        - id
+        - issueId
+        - parentCommentId
+        - userId
+      filter: {}
+      allow_aggregations: true

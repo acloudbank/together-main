@@ -1,0 +1,19 @@
+mutation purposeStepUpdateLetterById(
+  $id: uuid!
+  $feelings: String!
+  $expectations: String!
+  $additionalInformation: String
+  $status: letterStatus_enum!
+) {
+  update_letters_by_pk(
+    _set: {
+      feelings: $feelings
+      expectations: $expectations
+      additionalInformation: $additionalInformation
+      status: $status
+    }
+    pk_columns: { id: $id }
+  ) {
+    id
+  }
+}

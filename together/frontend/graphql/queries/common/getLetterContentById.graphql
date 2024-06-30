@@ -1,0 +1,10 @@
+query getLetterContentById($contentId: uuid!) {
+  letterContents_by_pk(id: $contentId) {
+    id
+    content
+    representative {
+      firstname
+      lastname
+    }
+  }
+}

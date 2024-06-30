@@ -1,0 +1,25 @@
+table:
+  name: shares
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+        - id
+        - issueId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - updated_at
+        - id
+        - issueId
+        - userId
+      filter: {}
+      allow_aggregations: true

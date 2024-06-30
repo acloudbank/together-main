@@ -1,0 +1,23 @@
+query getCommentsByIssueId($issueId: uuid!, $sortBy: order_by!, $userId: uuid!) {
+  issues_by_pk(id: $issueId) {
+    id
+    comments(order_by: {created_at: $sortBy}) {
+      content
+      id
+      parentCommentId
+      created_at
+      user {
+        id
+        username
+      }
+    }
+    comments_aggregate {
+      aggregate {
+        count
+      }
+    }
+    issues_users(where: {userId: {_eq: $userId}, issueId: {_eq: $issueId}}, limit: 1) {
+      id
+    }
+  }
+}

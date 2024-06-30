@@ -1,0 +1,60 @@
+table:
+  name: users
+  schema: public
+object_relationships:
+  - name: userSource
+    using:
+      foreign_key_constraint_on: source
+array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          name: comments
+          schema: public
+  - name: issues
+    using:
+      foreign_key_constraint_on:
+        column: creatorId
+        table:
+          name: issues
+          schema: public
+  - name: issues_users
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          name: issues_users
+          schema: public
+  - name: letters
+    using:
+      foreign_key_constraint_on:
+        column: creatorId
+        table:
+          name: letters
+          schema: public
+  - name: sessions
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          name: sessions
+          schema: public
+  - name: userIssueLists
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          name: userIssueLists
+          schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - accountType
+        - email
+        - id
+        - image
+        - username
+      filter: {}

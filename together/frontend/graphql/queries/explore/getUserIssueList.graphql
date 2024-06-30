@@ -1,0 +1,11 @@
+query getUserIssueList($userId: uuid!, $type: userIssueListType_enum!) {
+  userIssueLists(
+    where: { _and: [{ userId: { _eq: $userId } }, { type: { _eq: $type } }] }
+  ) {
+    id
+    userIssueListEntries {
+      id
+      issueId
+    }
+  }
+}

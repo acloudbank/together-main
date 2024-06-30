@@ -1,0 +1,32 @@
+import { AliasToken } from "antd/es/theme/internal";
+import { colors } from "../../../ui/colors";
+
+export const defaultToken: Partial<AliasToken> = {
+  colorPrimary: colors.primaryColor,
+  colorText: colors.textColor,
+  colorTextSecondary: colors.textColorSecondary,
+  colorTextTertiary: colors.textColorTertiary,
+  colorSuccess: colors.successColor,
+  colorError: colors.errorColor,
+  colorInfo: colors.infoColor,
+  colorIcon: colors.iconColor,
+  colorWarning: colors.warningColor,
+  colorLink: colors.linkColor,
+  borderRadius: 12,
+  controlHeight: 52,
+  colorBorder: colors.borderColor,
+  colorBgContainerDisabled: colors.backgroundDisabledColor,
+  colorTextPlaceholder: colors.placeholderColor,
+  colorTextDisabled: colors.textDisabledColor,
+  colorErrorBorder: colors.errorBorderColor,
+  colorErrorBorderHover: colors.errorBorderColor,
+  fontSize: 16,
+  fontSizeHeading1: 40,
+  lineHeightHeading1: 1.1,
+  fontSizeHeading2: 32,
+  lineHeightHeading2: 1.2,
+  fontSizeHeading3: 22,
+  lineHeightHeading3: 1.1,
+  fontSizeHeading4: 18,
+  lineHeightHeading4: 1.333333333,
+};

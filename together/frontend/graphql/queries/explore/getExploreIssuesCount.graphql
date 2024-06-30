@@ -1,0 +1,7 @@
+query getExploreIssuesCount($where: issues_bool_exp) {
+  issues_aggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}

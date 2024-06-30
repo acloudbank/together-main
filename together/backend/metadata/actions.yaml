@@ -1,0 +1,92 @@
+actions:
+  - name: addUserZipCode
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/addUserZipCode'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+    permissions:
+      - role: unauthenticated
+  - name: authenticateWithCredentials
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/authenticateWithCredentials'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+    permissions:
+      - role: unauthenticated
+  - name: authenticateWithGoogle
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/authenticateWithGoogle'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+    permissions:
+      - role: unauthenticated
+  - name: confirmEmail
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/confirmEmail'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+    permissions:
+      - role: user
+  - name: requestPasswordReset
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/requestPasswordReset'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+    permissions:
+      - role: unauthenticated
+  - name: resetPassword
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/resetPassword'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+  - name: signUpWithCredentials
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/signUpWithCredentials'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+    permissions:
+      - role: unauthenticated
+  - name: validatePasswordResetToken
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTIONS_HANDLER_WEBHOOK_BASEURL}}/mutations/validatePasswordResetToken'
+      forward_client_headers: true
+      headers:
+        - name: HASURA_ACTION_SECRET
+          value_from_env: HASURA_ACTION_SECRET_ENV
+    permissions:
+      - role: unauthenticated
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: AuthenticateWithGoogleOutput
+    - name: authenticateWithCredentialsOutput
+    - name: resetPasswordOutput
+    - name: confirmEmailOutput
+    - name: signUpWithCredentialsOutput
+    - name: requestPasswordResetOutput
+    - name: addUserZipCodeOutput
+    - name: ValidatePasswordResetTokenOutput
+  scalars: []

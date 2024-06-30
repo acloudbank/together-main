@@ -1,0 +1,5 @@
+mutation invalidateSessionsForUser($userId: uuid!) {
+  update_sessions(where: {userId: {_eq: $userId}}, _set: {isValid: false}) {
+    affected_rows
+  }
+}

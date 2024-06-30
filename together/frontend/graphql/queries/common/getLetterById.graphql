@@ -1,0 +1,39 @@
+query getLetterById($letterId: uuid!) {
+  letters_by_pk(id: $letterId) {
+    city
+    id
+    state
+    status
+    street
+    unit
+    creatorName
+    creatorSurname
+    topic
+    feelings
+    expectations
+    additionalInformation
+    issueId
+    sendEmail
+    language
+    issue {
+      content
+      isPrivate
+      updated_at
+      created_at
+      title
+      id
+    }
+    letterContents {
+      content
+      created_at
+      id
+      updated_at
+      representative {
+        id
+        firstname
+        lastname
+        middlename
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+CREATE TABLE "public"."userIssueListEntries" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "userIssueListId" uuid NOT NULL, "issueId" uuid NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("issueId") REFERENCES "public"."issues"("id") ON UPDATE cascade ON DELETE restrict, FOREIGN KEY ("userIssueListId") REFERENCES "public"."userIssueLists"("id") ON UPDATE cascade ON DELETE restrict, UNIQUE ("id"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

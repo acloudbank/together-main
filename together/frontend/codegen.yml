@@ -1,0 +1,33 @@
+schema:
+  - ${HASURA_GRAPHQL_URL}:
+      headers:
+        x-hasura-admin-secret: ${HASURA_GRAPHQL_ADMIN_SECRET}
+documents:
+  - "./**/*.graphql"
+watch: true
+config:
+  scalars:
+    DateTime: Date
+    JSON: "{ [key: string]: any }"
+    timestamptz: string
+    numeric: number
+overwrite: true
+generates:
+  ./generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - "typescript-resolvers"
+    config:
+      withHooks: true
+      withComponent: true
+      withHOC: true
+      withMutationFn: true
+      withRefetchFn: true
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

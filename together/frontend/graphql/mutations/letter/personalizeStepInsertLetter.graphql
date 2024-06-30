@@ -1,0 +1,25 @@
+mutation personalizeStepInsertLetter(
+  $creatorName: String!
+  $creatorSurname: String!
+  $unit: String!
+  $street: String!
+  $city: String!
+  $state: String!
+  $status: letterStatus_enum!
+  $language: language_enum
+) {
+  insert_letters_one(
+    object: {
+      creatorSurname: $creatorSurname
+      creatorName: $creatorName
+      unit: $unit
+      street: $street
+      status: $status
+      city: $city
+      state: $state
+      language: $language
+    }
+  ) {
+    id
+  }
+}

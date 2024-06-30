@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+body,
+body > div:first-child,
+div#__next,
+div#__next > div,
+html {
+  min-height: 100vh;
+  height: unset;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Primary buttons */
+.ant-btn-primary:not(:disabled) {
+  background: linear-gradient(104.39deg, #61a3ff 12.95%, #1472f2 91.17%);
+}
+
+.ant-btn-primary:not(:disabled):hover {
+  background: linear-gradient(
+    98.38deg,
+    #80b5ff 3.41%,
+    #1472f2 48.15%,
+    #0052c1 95.98%
+  );
+}
+
+.ant-btn-primary:not(:disabled):active {
+  background-color: #0052c1;
+}
+
+.ant-btn-primary:not(:disabled):focus {
+  background-color: #0052c1;
+}
+
+.ant-btn-primary:disabled {
+  border-color: #dee4e7;
+}
+
+/* Default buttons*/
+.ant-btn-default:not(:disabled):hover {
+  background-color: #475d67;
+  border-color: #475d67;
+  color: #fff;
+}
+.ant-btn-default:not(:disabled):active {
+  background-color: #79929d;
+  border-color: #79929d;
+  color: #fff;
+}
+.ant-btn-default:disabled {
+  border-color: #dee4e7;
+}
+
+:focus {
+  outline: 0;
+}
+
+/* Notifications */
+.ant-notification-notice-close {
+  top: 0px !important;
+  inset-inline-end: 0px !important;
+}

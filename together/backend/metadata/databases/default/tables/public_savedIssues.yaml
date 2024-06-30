@@ -1,0 +1,33 @@
+table:
+  name: savedIssues
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+        - issueId
+        - status
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - status
+        - created_at
+        - updated_at
+        - id
+        - issueId
+        - userId
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - status
+      filter: {}
+      check: null

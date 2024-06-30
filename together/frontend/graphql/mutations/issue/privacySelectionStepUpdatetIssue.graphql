@@ -1,0 +1,12 @@
+mutation privacySelectionStepUpdateIssue(
+  $id: uuid!
+  $isPrivate: Boolean
+  $status: issueStatus_enum!
+) {
+  update_issues_by_pk(
+    pk_columns: { id: $id }
+    _set: { isPrivate: $isPrivate, status: $status }
+  ) {
+    id
+  }
+}

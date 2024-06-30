@@ -1,0 +1,11 @@
+  mutation authenticateWithGoogle(
+    $email: String = ""
+    $username: String = ""
+  ) {
+    authenticationResult: authenticateWithGoogle(
+      email: $email
+      username: $username
+    ) {
+      sessionId
+    }
+  }

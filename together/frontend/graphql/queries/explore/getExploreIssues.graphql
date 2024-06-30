@@ -1,0 +1,39 @@
+query getExploreIssues($limit: Int!, $offset: Int!, $where: issues_bool_exp) {
+  issues(
+    limit: $limit
+    offset: $offset
+    order_by: { created_at: desc }
+    where: $where
+  ) {
+    category
+    content
+    id
+    title
+    created_at
+    status
+    creatorId
+    fieldViewScale
+    user {
+      email
+      id
+      image
+      username
+    }
+    issues_users {
+      id
+      user {
+        email
+        username
+        id
+        image
+      }
+    }
+    userIssueListEntries_aggregate(
+      where: { userIssueList: { type: { _eq: LIKED } } }
+    ) {
+      aggregate {
+        count
+      }
+    }
+  }
+}

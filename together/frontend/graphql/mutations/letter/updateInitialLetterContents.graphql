@@ -1,0 +1,10 @@
+mutation updateInitialLetterContents($letterId: uuid!, $content: String) {
+  update_letterContents(
+    where: { letterId: { _eq: $letterId } }
+    _set: { content: $content }
+  ) {
+    returning {
+      id
+    }
+  }
+}

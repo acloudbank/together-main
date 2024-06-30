@@ -1,0 +1,5 @@
+mutation addUserZipCode($sessionId: uuid!, $zipCode: String) {
+  addUserZipCode(sessionId: $sessionId, zipCode: $zipCode) {
+    userId
+  }
+}

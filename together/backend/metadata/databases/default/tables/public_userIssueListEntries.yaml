@@ -1,0 +1,39 @@
+table:
+  name: userIssueListEntries
+  schema: public
+object_relationships:
+  - name: issue
+    using:
+      foreign_key_constraint_on: issueId
+  - name: userIssueList
+    using:
+      foreign_key_constraint_on: userIssueListId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userIssueList:
+          userId:
+            _eq: X-Hasura-User-Id
+      columns:
+        - issueId
+        - userIssueListId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - issueId
+        - userIssueListId
+      filter:
+        userIssueList:
+          userId:
+            _eq: X-Hasura-User-Id
+      allow_aggregations: true
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userIssueList:
+          userId:
+            _eq: X-Hasura-User-Id

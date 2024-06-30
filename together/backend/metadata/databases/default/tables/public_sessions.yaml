@@ -1,0 +1,22 @@
+table:
+  name: sessions
+  schema: public
+object_relationships:
+  - name: sessionType
+    using:
+      foreign_key_constraint_on: type
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - expires
+        - id
+        - type
+        - userId
+        - userRole
+      filter:
+        userId:
+          _eq: x-hasura-user-id
