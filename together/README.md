@@ -1,6 +1,6 @@
 # Real Time Voting
 
-# This platform is integrated with the VOTELLY voting system that is hack proof because of the blockchaine databes.
+# This platform is integrated with the VOTELLY voting system that is hack proof because of the blockchaine database.
 
 Online voting platform using BlockChain database, AI, and Biodata End to end verifiable blockchain voting software for a variety of use cases
 
