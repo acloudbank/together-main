@@ -17,5 +17,4 @@ The ciphered final tally will be released into the public, along with everyone's
  Civic duties made easy. Let your vote be cast from the comfort of your own home, using nothing but a personal device, and know they will be securely delivered, processed and stored.
 
 
-![image](https://homepesa.com/images/2023-03-m7.jpeg)
 
